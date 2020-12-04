@@ -1,0 +1,30 @@
+{
+  "name": "developer_quize",
+  "version": "1.0.0",
+  "description": "quize for developers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon index.ts",
+    "dev:debug": "nodemon --inspect index.ts",
+    "build": "tsc -p ."
+  },
+  "author": "Vladimir Honcharuk",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.2",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.17.8",
+    "@types/mongoose": "^5.7.36",
+    "nodemon": "^2.0.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  }
+}
