@@ -10,7 +10,7 @@ export interface User {
     email: string;
     firstName: string;
     lastName: string;
-    passwordHash: string;
+    password: string;
     role: Role;
     removed_at: boolean;
     status: boolean;
