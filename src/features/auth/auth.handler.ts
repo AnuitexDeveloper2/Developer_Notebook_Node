@@ -8,5 +8,7 @@ export async function register(req: Request, res: Response) {
 }
 
 export async function signIn(req: Request, res: Response) {
-
+    await authService.signIn(req.body.email, req.body.password)
+        .then((response) => res.json(response))
+        .catch()
 }

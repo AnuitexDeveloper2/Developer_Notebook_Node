@@ -13,3 +13,7 @@ export const register = async (user: userModel) => {
     const result = await userModel.create(user)
     return result
 }
+
+export const signIn = async (email: string, password: string) => {
+    
+}
