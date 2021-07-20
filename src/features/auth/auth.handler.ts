@@ -2,9 +2,13 @@ import { Request, Response } from 'express';
 import * as authService from "../auth/auth.service";
 
 export async function register(req: Request, res: Response) {
+    res.json("Ok")
+    return
     await authService.register(req.body)
         .then((response) => res.json(response))
-        .catch()
+        .catch((error) => {
+            res.json(error.message);
+        })
 }
 
 export async function signIn(req: Request, res: Response) {
