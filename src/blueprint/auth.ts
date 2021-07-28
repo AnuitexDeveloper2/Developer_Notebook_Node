@@ -8,3 +8,11 @@ import Joi from "joi"
         password: Joi.string().required(),
     }
 })
+
+export const loginSchema : Joi.Schema = Joi.object({
+    body: {
+        email: Joi.string().required(),
+        password: Joi.string().required(),
+    }
+})
+

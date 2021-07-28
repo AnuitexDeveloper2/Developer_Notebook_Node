@@ -8,5 +8,6 @@ export const register = async (user: userModel) => {
 }
 
 export const signIn = async (email: string, password: string) => {
-   return await authRepository.signIn(email, password)
+   const result = await authRepository.signIn(email, password)
+   return generateTokens(result)
 }
