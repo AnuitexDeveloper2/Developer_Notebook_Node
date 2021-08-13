@@ -5,6 +5,7 @@ import { connectdb } from './src/dataAccess/database/connectiondb';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { authRouter } from './src/features/auth';
+import { topicsRouter } from './src/features/topics';
 
 const app: Application = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,7 +15,8 @@ env.config()
 env.config({ path: path.resolve(process.cwd(), `.env.${process.env.NODE_ENV}`) })
 connectdb();
 
-app.use('/auth',authRouter)
+app.use('/auth', authRouter)
+app.use('/topics', topicsRouter)
 app.listen(process.env.PORT, () => {
     console.log(`server started listenin on port ${process.env.PORT}`)
 })
