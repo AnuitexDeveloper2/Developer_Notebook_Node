@@ -18,6 +18,7 @@ export enum Level {
 interface Topic {
     title: string;
     src: string;
+    img: any
 }
 
 const schema = mongoose.Schema;
@@ -25,8 +26,15 @@ const schema = mongoose.Schema;
 const topicSchema = new schema({
     title: {
         type: String,
-        required:true
+        required: true
     },
+
+    description: {
+        type: String,
+        required: true
+    },
+
+    img: { type: String}
 
 
 })
