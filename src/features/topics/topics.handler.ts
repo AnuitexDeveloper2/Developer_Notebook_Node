@@ -27,3 +27,12 @@ export async function saveTopicImage(req: any, res: Response) {
             res.json({error:error.message});
         })
 }
+
+export async function getTopic(req: Request, res: Response) {
+    logger.info("Get Topic *****Handler*****")
+    await topicService.getTopic(req.params.id)
+        .then((response) => res.json(response))
+        .catch((error) => {
+            res.json({error:error.message});
+        })
+}

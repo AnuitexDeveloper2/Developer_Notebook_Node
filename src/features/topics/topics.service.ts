@@ -12,3 +12,7 @@ export const createTopic = async(topic: topicModel): Promise<topicModel> => {
 export const saveTopicImage = async(data: any, topicId: string) => {
     return await topicRepository.saveTopicImage(data, topicId)
 }
+
+export const getTopic = async(topicId: string) => {
+    return await topicRepository.getTopic(topicId)
+}

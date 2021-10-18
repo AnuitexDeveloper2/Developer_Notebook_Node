@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import { authRouter } from './src/features/auth';
 import { topicsRouter } from './src/features/topics';
+import { contentRouter } from "./src/features/content";
 import logger from './src/helpers/Logging';
 
 const app: Application = express();
@@ -13,12 +14,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors())
 env.config()
-logger.info("We are here")
 env.config({ path: path.resolve(process.cwd(), `.env.${process.env.NODE_ENV}`) })
 connectdb();
 
 app.use('/auth', authRouter)
 app.use('/topics', topicsRouter)
+app.use('/contents',contentRouter)
 app.listen(process.env.PORT, () => {
     console.log(`server started listenin on port ${process.env.PORT}`)
 })

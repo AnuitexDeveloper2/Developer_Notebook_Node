@@ -5,16 +5,26 @@ const randomstring = require("randomstring");
 
 
 
-export const getAllTopics = async() => {
-    return await topicModel.find()
- }
+export const getAllTopics = async (): Promise<Array<topicModel>> => {
+        return await topicModel.find()
+}
 
-export const createTopic = async(topic: topicModel) => {
+export const createTopic = async (topic: topicModel): Promise<topicModel> => {
         const result = await topicModel.create(topic)
         return result
 }
 
-export const saveTopicImage = async(data: any, topicId: string) => {
+export const editTopic = async (topic: topicModel): Promise<topicModel | null> => {
+        const updatedTopic = await topicModel.findByIdAndUpdate(topic._id, topic)
+        return updatedTopic
+}
+
+export const getTopic = async (id: string): Promise<topicModel | null> => {
+        const topic = await topicModel.findById(id)
+        return topic
+}
+
+export const saveTopicImage = async (data: any, topicId: string) => {
         const topic = await topicModel.findById(topicId)
         if (!topic) {
                 throw new errors.BadRequestError("Topic not found")
@@ -26,7 +36,7 @@ export const saveTopicImage = async(data: any, topicId: string) => {
         console.log("Start upload aws")
         const result = await store(data[0].buffer, `${id}.jpg`)
 
-       topic.img = result
+        topic.img = result
 
         return topic.save()
 }
