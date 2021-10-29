@@ -36,3 +36,21 @@ export async function getTopic(req: Request, res: Response) {
             res.json({error:error.message});
         })
 }
+
+export async function editTopic(req: Request, res: Response) {
+    logger.info("Edit Topic *****Handler*****")
+    await topicService.editTopic(req.body, req.params.id)
+        .then((response) => res.json(response))
+        .catch((error) => {
+            res.json({error:error.message});
+        })
+}
+
+export async function removeTopic(req: Request, res: Response) {
+    logger.info("Remove Topic *****Handler*****")
+    await topicService.removeTopic(req.params.id)
+        .then((response) => res.json(response))
+        .catch((error) => {
+            res.json({error:error.message});
+        })
+}
