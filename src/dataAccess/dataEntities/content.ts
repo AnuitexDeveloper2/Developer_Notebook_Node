@@ -13,15 +13,11 @@ const contentSchema = new schema ({
         required: true
     },
 
-    type: {
-        type: ContentTypes 
-    },
-
-    content: {
+    description: {
         type: String
     },
 
-    definition: {
+    appointment: {
         type: String
     }
     

@@ -2,7 +2,7 @@ import logger from "../../helpers/Logging";
 import { Request, Response } from "express";
 import * as contentService from "./contents.service";
 
-export async function createTopic(req: Request, res: Response) {
+export async function createContent(req: Request, res: Response) {
     logger.info("Create Content *****Handler***")
     await contentService.createContent(req.body)
         .then((response) => res.json(response))

@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { createTopic, getContent } from "./contents.handler";
+import validate from "../../middlewares/validate";
+import { create } from "../../blueprint/content";
+import { createContent, getContent } from "./contents.handler";
 
 export const contentRouter =  Router()
 
-contentRouter.post('/admin', createTopic)
+contentRouter.post('/admin', validate(create), createContent)
 
 contentRouter.get('/admin', getContent)
