@@ -24,3 +24,9 @@ export const get: Joi.Schema = Joi.object({
         id: Joi.string().required(),
     }
 })
+
+export const remove: Joi.Schema = Joi.object({
+    params: {
+        id: Joi.string().required(),
+    }
+})

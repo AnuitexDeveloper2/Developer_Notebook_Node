@@ -28,3 +28,12 @@ export async function editContent(req: Request, res: Response) {
             res.json({error:error.message});
         })
 }
+
+export async function removeContent(req: Request, res: Response) {
+    logger.info("Remove Content *****Handler***")
+    await contentService.removeContent(req.params.id)
+        .then((response) => res.json(response))
+        .catch((error) => {
+            res.json({error:error.message});
+        })
+}
