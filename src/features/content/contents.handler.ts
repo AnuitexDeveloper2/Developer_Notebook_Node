@@ -12,8 +12,17 @@ export async function createContent(req: Request, res: Response) {
 }
 
 export async function getContent(req: Request, res: Response) {
-    logger.info("Create Content *****Handler***")
-    await contentService.getContent(req.body)
+    logger.info("Get Content *****Handler***")
+    await contentService.getContent(req.params.id)
+        .then((response) => res.json(response))
+        .catch((error) => {
+            res.json({error:error.message});
+        })
+}
+
+export async function editContent(req: Request, res: Response) {
+    logger.info("Edit Content *****Handler***")
+    await contentService.editContent(req.body, req.params.id)
         .then((response) => res.json(response))
         .catch((error) => {
             res.json({error:error.message});

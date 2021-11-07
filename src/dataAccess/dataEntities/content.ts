@@ -1,4 +1,4 @@
-import  mongoose, { model }  from "mongoose";
+import mongoose, { model } from "mongoose";
 import { ContentTypes } from "../../common/enums";
 
 interface Content {
@@ -7,20 +7,27 @@ interface Content {
 
 const schema = mongoose.Schema
 
-const contentSchema = new schema ({
+const contentSchema = new schema({
     title: {
         type: String,
         required: true
     },
 
     description: {
-        type: String
+        type: String,
+        required: true
     },
 
     appointment: {
         type: String
+    },
+
+    topic: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Topic',
+        required: true
     }
-    
+
 })
 
 interface contentModel extends Content, mongoose.Document { }
