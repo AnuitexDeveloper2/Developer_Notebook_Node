@@ -2,8 +2,8 @@ var AWS = require("aws-sdk");
 const randomstring = require("randomstring");
 
 var s3 = new AWS.S3({
-  accessKeyId: "AKIAX2HSUYRSZ5UWUJWW",
-  secretAccessKey: "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",
+  accessKeyId: "AKIAX2HSUYRS5Y3KSB3V",
+  secretAccessKey: "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",
   region: "eu-central-1",
 });
 

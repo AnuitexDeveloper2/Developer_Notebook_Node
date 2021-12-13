@@ -10,6 +10,7 @@ import { contentRouter } from "./src/features/content";
 import logger from './src/helpers/Logging';
 import expressWinston from "express-winston";
 import morgan from "morgan";
+import { appointmentRoute } from './src/features/appointment';
 
 const app: Application = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -36,6 +37,7 @@ connectdb();
 app.use('/auth', authRouter)
 app.use('/topics', topicsRouter)
 app.use('/contents', contentRouter)
+app.use('/appointment', appointmentRoute)
 app.listen(process.env.PORT, () => {
     console.log(`server started listenin on port ${process.env.PORT}`)
 })

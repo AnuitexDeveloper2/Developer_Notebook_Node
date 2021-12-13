@@ -1,7 +1,8 @@
-import errors from "../../common/errors"
-import contentModel from "../../dataAccess/dataEntities/content"
-import logger from "../../helpers/Logging"
-import { ResponseList } from "../../types/response"
+import errors from "../../../common/errors"
+import contentModel from "../../../dataAccess/dataEntities/content"
+import appointmentModel from "../../../dataAccess/dataEntities/appointment";
+import logger from "../../../helpers/Logging"
+import { ResponseList } from "../../../types/response"
 
 export const createContent = async (content: contentModel): Promise<contentModel> => {
     const newContent = await contentModel.create(content)
@@ -31,4 +32,12 @@ export const removeContent = async (id: string): Promise<boolean> => {
         return true
     }
     return false
+}
+
+export const addAppointment = async (title: string): Promise<appointmentModel> => {
+    return await appointmentModel.create({ title })
+}
+
+export const editAppointment = async (title: string, id: string) => {
+    return await appointmentModel.findByIdAndUpdate(id, { title: title })
 }
