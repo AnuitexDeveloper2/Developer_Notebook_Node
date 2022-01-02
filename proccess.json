@@ -1,0 +1,20 @@
+{
+    "apps": [
+        {
+            "exec_mode": "cluster",
+            "instances": 1,
+            "autorestart": true,
+            "restart_delay": 1000,
+            "name": "NodeServer",
+            "script": "npm",
+            "automation": false,
+            "args": "run script",
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "env_production": {
+                "NODE_ENV": "production"
+            }
+        }
+]
+}
