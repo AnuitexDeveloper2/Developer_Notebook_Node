@@ -6,9 +6,11 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon index.ts",
-    "start:dev": "nodemon --inspect index.ts",
-    "build": "tsc -p .",
-    "script": "ts-node -T -P server/tsconfig.json server/index.ts"
+    "start:dev": "rimraf ./dist && nodemon --inspect index.ts",
+    "build": "rimraf ./dist && tsc -p .",
+    "script": "ts-node -T -P server/tsconfig.json server/index.ts",
+    "clean:dist": "rimraf ./dist",
+    "pm2": "tsc -p . && pm2 start dist/index.js"
   },
   "author": "Vladimir Honcharuk",
   "license": "ISC",
@@ -27,6 +29,7 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.3",
     "randomstring": "^1.2.1",
+    "rimraf": "^3.0.2",
     "winston": "^3.3.3"
   },
   "devDependencies": {
