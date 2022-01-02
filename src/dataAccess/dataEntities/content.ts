@@ -19,7 +19,9 @@ const contentSchema = new schema({
     },
 
     appointment: {
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Appointment",
+        required: true
     },
 
     topic: {
