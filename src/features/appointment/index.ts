@@ -9,6 +9,6 @@ appointmentRoute.post("/", validate(create),handler.create )
 
 appointmentRoute.get("/:topicId", validate(get), handler.get)
 
-appointmentRoute.put("./:id", validate(edit), handler.edit)
+appointmentRoute.put("/:id", validate(edit), handler.edit)
 
-appointmentRoute.delete("./:id", validate(remove), handler.remove)
+appointmentRoute.delete("/:id", validate(remove), handler.remove)

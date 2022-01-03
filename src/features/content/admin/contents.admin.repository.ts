@@ -11,7 +11,7 @@ export const createContent = async (content: contentModel): Promise<contentModel
 
 export const getContent = async (topicId: string): Promise<ResponseList<contentModel>> => {
     const totalDocuments = await contentModel.countDocuments({ topic: topicId })
-    const contents = await contentModel.find({ topic: topicId })
+    const contents = await contentModel.find({ topic: topicId }).populate("appointment")
     const result: ResponseList<contentModel> = {
         data: contents,
         count: totalDocuments
