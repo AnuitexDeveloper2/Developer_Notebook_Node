@@ -9,9 +9,14 @@ export const edit = async (data: appointmentModel, id: string): Promise<appointm
 }
 
 export const get = async (topicId: string): Promise<Array<appointmentModel>> => {
-    return await appointmentModel.find({topic: topicId})
+    const result = await appointmentModel.find({topic: topicId})
+    return result
 }
-
+/**
+ * 
+ * @param id 
+ * @returns 
+ */
 export const remove = async (id: string): Promise<appointmentModel | null> => {
     return await appointmentModel.findByIdAndDelete(id)
 }
