@@ -4,7 +4,7 @@
   "description": "quize for developers",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "tsc -p . && pm2 start dist/index.js",
     "dev": "nodemon index.ts",
     "start:dev": "rimraf ./dist && nodemon --inspect index.ts",
     "build": "rimraf ./dist && tsc -p .",
