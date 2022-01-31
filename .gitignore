@@ -24,3 +24,4 @@ dev-deploy.bat
 *~
 .pm2
 *log
+/dist
