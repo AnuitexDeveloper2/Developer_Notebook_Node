@@ -38,9 +38,7 @@ app.use('/auth', authRouter)
 app.use('/topics', topicsRouter)
 app.use('/contents', contentRouter)
 app.use('/appointment', appointmentRoute)
-// app.use('/', (req, _res, _next) => {
-//     _res.send("Healthy");
-//   });
+
 app.listen(process.env.PORT, () => {
     console.log(`server started listenin on port ${process.env.PORT}`)
 })
