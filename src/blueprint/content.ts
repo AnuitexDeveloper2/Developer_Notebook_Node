@@ -19,7 +19,7 @@ export const edit: Joi.Schema = Joi.object({
     }
 })
 
-export const get: Joi.Schema = Joi.object({
+export const getAdmin: Joi.Schema = Joi.object({
     params: {
         id: Joi.string().required(),
     }
@@ -28,5 +28,13 @@ export const get: Joi.Schema = Joi.object({
 export const remove: Joi.Schema = Joi.object({
     params: {
         id: Joi.string().required(),
+    }
+})
+
+export const get: Joi.Schema = Joi.object({
+    params:{
+        appointmentId: Joi.string().required(),
+        topicId: Joi.string().required(),
+        pageNumber: Joi.number().required(),
     }
 })
