@@ -17,9 +17,9 @@ export const generateTokens = (userModel: userModel) => {
   
     const respons = {
       result: true,
-      "AccessToken": accessToken,
-      "RefreshToken": refreshToken,
-      "User": userModel
+      "accessToken": accessToken,
+      "refreshToken": refreshToken,
+      "user": userModel
     }
     return respons;
   }

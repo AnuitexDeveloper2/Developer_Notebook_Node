@@ -5,11 +5,12 @@ export const create = async (data: appointmentModel): Promise<appointmentModel> 
 }
 
 export const edit = async (data: appointmentModel, id: string): Promise<appointmentModel | null> => {
-    return await appointmentModel.findByIdAndUpdate(id,data)
+    const result = await appointmentModel.findByIdAndUpdate(id, data)
+    return result;
 }
 
 export const get = async (topicId: string): Promise<Array<appointmentModel>> => {
-    const result = await appointmentModel.find({topic: topicId})
+    const result = await appointmentModel.find({ topic: topicId })
     return result
 }
 /**

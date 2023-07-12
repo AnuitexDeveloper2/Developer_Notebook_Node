@@ -1,8 +1,17 @@
+import { MyErrors } from "../../constants/errors";
 import topicModel from "../../dataAccess/dataEntities/topics"
+import { CommonResponse } from "../../models/response"
 import * as topicRepository from "./topics.repository"
 
-export const getTopics = async () => {
-    return await topicRepository.getAllTopics()
+
+export const getTopics = async (): Promise<CommonResponse<topicModel[]>> => {
+    let result: CommonResponse<topicModel[]> = { data: null };
+    const resultData = await topicRepository.getAllTopics()
+    if (!resultData) {
+        result.error = MyErrors.SOMETHING_WENT_WRONG
+    }
+    result.data = resultData
+    return result
 }
 
 export const createTopic = async (topic: topicModel): Promise<topicModel> => {
