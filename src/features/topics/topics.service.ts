@@ -14,8 +14,14 @@ export const getTopics = async (): Promise<CommonResponse<topicModel[]>> => {
     return result
 }
 
-export const createTopic = async (topic: topicModel): Promise<topicModel> => {
-    return await topicRepository.createTopic(topic)
+export const createTopic = async (topic: topicModel): Promise<CommonResponse<topicModel>> => {
+    let result: CommonResponse<topicModel> = { data: null };
+    const resultData = await topicRepository.createTopic(topic)
+    if (!resultData) {
+        result.error = MyErrors.SOMETHING_WENT_WRONG
+    }
+    result.data = resultData
+    return result
 }
 
 export const saveTopicImage = async (data: any, topicId: string) => {
@@ -30,6 +36,12 @@ export const editTopic = async (topic: topicModel, id: string): Promise<topicMod
     return await topicRepository.editTopic(topic, id)
 }
 
-export const removeTopic = async (id: string): Promise<boolean> => {
-    return await topicRepository.removeTopic(id)
+export const removeTopic = async (id: string): Promise<CommonResponse<boolean>> => {
+    let result: CommonResponse<boolean> = { data: false };
+    const resultData = await topicRepository.removeTopic(id)
+    if (!resultData) {
+        result.error = MyErrors.SOMETHING_WENT_WRONG
+    }
+    result.data = resultData
+    return result
 }

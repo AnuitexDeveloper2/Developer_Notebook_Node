@@ -2,6 +2,7 @@ import errors from "../../common/errors"
 import topicModel from "../../dataAccess/dataEntities/topics"
 import logger from "../../helpers/Logging";
 import { store } from "../../tools/aws/files";
+import { FirebaseStorage } from "../../tools/firebase/file";
 const randomstring = require("randomstring");
 
 
@@ -34,7 +35,8 @@ export const saveTopicImage = async (data: any, topicId: string): Promise<topicM
         var appendedString = randomstring.generate(8);
         var id = `${topic._id}_${Date.now()}_${appendedString}`;
         logger.info("Start upload aws")
-        const result = await store(data[0].buffer, `${id}.jpg`)
+        const firabaseStorage = new FirebaseStorage(data[0].buffer, `${id}.jpg`)
+        const result = await firabaseStorage.uploadImage();
         topic.img = result
         return topic.save()
 }
