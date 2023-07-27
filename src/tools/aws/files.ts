@@ -23,7 +23,7 @@ export const store = (file, filename) => {
             resolve(filename);
           }
         }
-      );
+      ); 
     });
   };
 

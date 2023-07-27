@@ -1,5 +1,5 @@
 import contentModel from "../../../dataAccess/dataEntities/content"
 
-export const getContentsWithAppointment = async() => {
-    return await contentModel.find()
+export const getContentsByAppointmentId = async (appoinmentId: string) => {
+    return await contentModel.find({ appointment: appoinmentId })
 } 

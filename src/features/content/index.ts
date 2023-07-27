@@ -2,6 +2,7 @@ import { Router } from "express";
 import validate from "../../middlewares/validate";
 import { create, edit, get, remove } from "../../blueprint/content";
 import { createContent, getContent, editContent, removeContent, addAppointment, editAppointment } from "./admin/contents.admin.handler";
+import { getContentsByAppointmentId } from "./user/contents.handler";
 
 export const contentRouter = Router()
 
@@ -16,3 +17,5 @@ contentRouter.delete('/admin/:id', validate(remove), removeContent)
 contentRouter.post('/admin/app', addAppointment)
 
 contentRouter.put('/admin/app/:id', editAppointment)
+
+contentRouter.get('/user/:id', validate(get), getContentsByAppointmentId)

@@ -26,7 +26,7 @@ export const getTopic = async (id: string): Promise<topicModel | null> => {
         return topic
 }
 
-export const saveTopicImage = async (data: any, topicId: string): Promise<topicModel> => {
+export const saveTopicImage = async (data: any, topicId: string): Promise<topicModel | null> => {
         const topic = await topicModel.findById(topicId)
         if (!topic) {
                 throw new errors.BadRequestError("Topic not found")
@@ -38,7 +38,7 @@ export const saveTopicImage = async (data: any, topicId: string): Promise<topicM
         const firabaseStorage = new FirebaseStorage(data[0].buffer, `${id}.jpg`)
         const result = await firabaseStorage.uploadImage();
         topic.img = result
-        return topic.save()
+        return await topicModel.findByIdAndUpdate(topicId, topic)
 }
 
 export const removeTopic = async (id: string): Promise<boolean> => {
