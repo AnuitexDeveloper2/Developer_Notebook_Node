@@ -11,3 +11,13 @@ export async function getContentsByAppointmentId(req: Request, res: Response) {
             res.json({ error: error.message });
         })
 }
+
+export async function searchContentByString(req: Request, res: Response) {
+    logger.info("Get Contents by Appointment *****Handler***")
+    await userContentService.searchContent(req.params.search)
+        .then((response) => res.json(response))
+        .catch((error) => {
+            res.json({ error: error.message });
+        })
+}
+

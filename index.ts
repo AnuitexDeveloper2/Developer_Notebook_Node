@@ -1,4 +1,4 @@
-import express, { Application } from 'express';
+import express, { Application, RequestHandler } from 'express';
 import * as env from 'dotenv';
 import path from 'path'
 import { connectdb } from './src/dataAccess/database/connectiondb';
@@ -13,8 +13,8 @@ import morgan from "morgan";
 import { appointmentRoute } from './src/features/appointment';
 
 const app: Application = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }) as RequestHandler);
+app.use(bodyParser.json() as RequestHandler);
 app.use(cors())
 env.config()
 app.use(morgan('dev'));
